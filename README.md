@@ -7,7 +7,7 @@ For more information about the packages, see the upstream documentation.
 
 This repo contains the following branches:
 
-* [monitor](https://github.com/Faithlife/azure-sdk-for-net/tree/monitor/sdk/monitor) - Azure.Monitor.OpenTelemetry.AspNetCore and Azure.Monitor.OpenTelemetry.Exporter
+* [monitor](https://github.com/Faithlife/azure-sdk-for-net/blob/monitor/README.md) - Azure.Monitor.OpenTelemetry.AspNetCore and Azure.Monitor.OpenTelemetry.Exporter
 
 ## Building Monitor
 
