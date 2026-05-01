@@ -81,25 +81,10 @@ namespace Azure.Monitor.OpenTelemetry.Exporter
 
                 // Add a processor manually to the LoggerProvider created by the SDK
                 var exporterOptions = serviceProvider!.GetRequiredService<IOptionsMonitor<AzureMonitorExporterOptions>>().Get(Options.DefaultName);
-                var exporter = new AzureMonitorLogExporter(exporterOptions);
-
-                BaseProcessor<LogRecord> baseProcessor = exporterOptions.EnableTraceBasedLogsSampler
-                                                            ? new LogFilteringProcessor(exporter)
-                                                            : new BatchLogRecordExportProcessor(exporter);
-
                 if (exporterOptions.EnableLiveMetrics)
                 {
                     var manager = serviceProvider!.GetRequiredService<LiveMetricsClientManager>();
-
-                    loggerProvider.AddProcessor(new CompositeProcessor<LogRecord>(
-                    [
-                        new LiveMetricsLogProcessor(manager),
-                        baseProcessor
-                    ]));
-                }
-                else
-                {
-                    loggerProvider.AddProcessor(baseProcessor);
+                    loggerProvider.AddProcessor(new LiveMetricsLogProcessor(manager));
                 }
             }
         }
