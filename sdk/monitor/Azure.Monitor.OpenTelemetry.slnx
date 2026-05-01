@@ -1,0 +1,33 @@
+<Solution>
+  <Folder Name="/DependentProjects/">
+    <Project Path="../../common/Perf/Azure.Test.Perf/Azure.Test.Perf.csproj" />
+    <Project Path="../core/Azure.Core.TestFramework/src/Azure.Core.TestFramework.csproj" />
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path="../../eng/Packages.Data.props" />
+  </Folder>
+  <Folder Name="/Solution Items/AspNetCore/">
+    <File Path="Azure.Monitor.OpenTelemetry.AspNetCore/CHANGELOG.md" />
+    <File Path="Azure.Monitor.OpenTelemetry.AspNetCore/Directory.Build.props" />
+    <File Path="Azure.Monitor.OpenTelemetry.AspNetCore/README.md" />
+  </Folder>
+  <Folder Name="/Solution Items/Exporter/">
+    <File Path="Azure.Monitor.OpenTelemetry.Exporter/CHANGELOG.md" />
+    <File Path="Azure.Monitor.OpenTelemetry.Exporter/Directory.Build.props" />
+    <File Path="Azure.Monitor.OpenTelemetry.Exporter/README.md" />
+  </Folder>
+  <Project Path="../core/Azure.Core/src/Azure.Core.csproj" />
+  <Project Path="Azure.Monitor.OpenTelemetry.AspNetCore/src/Azure.Monitor.OpenTelemetry.AspNetCore.csproj" />
+  <Project Path="Azure.Monitor.OpenTelemetry.AspNetCore/tests/AspNetCore.Benchmarks/Azure.Monitor.OpenTelemetry.AspNetCore.Benchmarks.csproj" />
+  <Project Path="Azure.Monitor.OpenTelemetry.AspNetCore/tests/Azure.Monitor.AspNetCoreTestApp/Azure.Monitor.AspNetCoreTestApp.csproj" />
+  <Project Path="Azure.Monitor.OpenTelemetry.AspNetCore/tests/Azure.Monitor.OpenTelemetry.AspNetCore.Demo/Azure.Monitor.OpenTelemetry.AspNetCore.Demo.csproj" />
+  <Project Path="Azure.Monitor.OpenTelemetry.AspNetCore/tests/Azure.Monitor.OpenTelemetry.AspNetCore.Integration.Tests/Azure.Monitor.OpenTelemetry.AspNetCore.Integration.Tests.csproj" />
+  <Project Path="Azure.Monitor.OpenTelemetry.AspNetCore/tests/Azure.Monitor.OpenTelemetry.AspNetCore.Tests/Azure.Monitor.OpenTelemetry.AspNetCore.Tests.csproj" />
+  <Project Path="Azure.Monitor.OpenTelemetry.AspNetCore/tests/Azure.Monitor.OpenTelemetry.LiveMetrics.Demo/Azure.Monitor.OpenTelemetry.LiveMetrics.Demo.csproj" />
+  <Project Path="Azure.Monitor.OpenTelemetry.Exporter/perf/Azure.Monitor.OpenTelemetry.Exporter.Perf.csproj" />
+  <Project Path="Azure.Monitor.OpenTelemetry.Exporter/src/Azure.Monitor.OpenTelemetry.Exporter.csproj" />
+  <Project Path="Azure.Monitor.OpenTelemetry.Exporter/tests/Azure.Monitor.OpenTelemetry.Exporter.AotCompatibilityTestApp/Azure.Monitor.OpenTelemetry.Exporter.AotCompatibilityTestApp.csproj" />
+  <Project Path="Azure.Monitor.OpenTelemetry.Exporter/tests/Azure.Monitor.OpenTelemetry.Exporter.Benchmarks/Azure.Monitor.OpenTelemetry.Exporter.Benchmarks.csproj" />
+  <Project Path="Azure.Monitor.OpenTelemetry.Exporter/tests/Azure.Monitor.OpenTelemetry.Exporter.Demo/Azure.Monitor.OpenTelemetry.Exporter.Demo.csproj" />
+  <Project Path="Azure.Monitor.OpenTelemetry.Exporter/tests/Azure.Monitor.OpenTelemetry.Exporter.Tests/Azure.Monitor.OpenTelemetry.Exporter.Tests.csproj" />
+</Solution>
