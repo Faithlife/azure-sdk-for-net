@@ -2,7 +2,6 @@
 // Licensed under the MIT License.
 
 using System;
-using Azure.Monitor.OpenTelemetry.Exporter.Internals;
 using Azure.Monitor.OpenTelemetry.Exporter.Internals.CustomerSdkStats;
 using Azure.Monitor.OpenTelemetry.Exporter.Internals.Platform;
 using Azure.Monitor.OpenTelemetry.LiveMetrics;
@@ -114,10 +113,7 @@ namespace Azure.Monitor.OpenTelemetry.Exporter
                     }
                 });
 
-            builder.Services.AddHostedService(serviceProvider =>
-            {
-                return new ExporterRegistrationHostedService(serviceProvider);
-            });
+            builder.Services.AddHostedService<ExporterRegistrationHostedService>();
 
             return builder;
         }
