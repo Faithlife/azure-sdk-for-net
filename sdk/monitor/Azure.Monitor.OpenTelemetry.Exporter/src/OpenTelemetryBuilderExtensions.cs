@@ -76,14 +76,6 @@ namespace Azure.Monitor.OpenTelemetry.Exporter
                 .WithMetrics()
                 .WithTracing();
 
-            builder.Services.ConfigureOpenTelemetryTracerProvider((sp, tracerProviderBuilder) =>
-            {
-                var exporterOptions = sp.GetRequiredService<IOptionsMonitor<AzureMonitorExporterOptions>>().Get(Options.DefaultName);
-                tracerProviderBuilder.SetSampler(exporterOptions.TracesPerSecond != null ?
-                    new RateLimitedSampler(exporterOptions.TracesPerSecond.Value) :
-                    new ApplicationInsightsSampler(exporterOptions.SamplingRatio));
-            });
-
             builder.Services.Configure<OpenTelemetryLoggerOptions>((loggingOptions) =>
             {
                 loggingOptions.IncludeFormattedMessage = true;
