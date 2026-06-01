@@ -1,8 +1,11 @@
 # Release History
 
-## 1.9.0-beta.1 (Unreleased)
+## 1.9.0-faithlife.1 (2026-06-01)
 
 ### Features Added
+
+* Logs are not submitted to Azure Monitor (to reduce ingestion costs).
+* Remove client-side sampling. All telemetry is sent.
 
 ### Breaking Changes
 
