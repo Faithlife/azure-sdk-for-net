@@ -1,5 +1,11 @@
 # Release History
 
+## 1.9.0-faithlife.3 (2026-06-11)
+
+### Features Added
+
+- Add the tag `faithlife.suppress_standard_metrics` to an `Activity` to stop it being recorded in pre-aggregated metrics.
+
 ## 1.9.0-faithlife.2 (2026-06-11)
 
 ### Features Added

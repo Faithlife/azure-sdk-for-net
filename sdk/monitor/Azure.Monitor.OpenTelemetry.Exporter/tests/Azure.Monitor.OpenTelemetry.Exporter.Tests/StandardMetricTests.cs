@@ -585,6 +585,37 @@ namespace Azure.Monitor.OpenTelemetry.Exporter.Tests
         }
 
         [Fact]
+        public void ValidateStandardMetricsSuppressedByActivityTag()
+        {
+            var activitySource = new ActivitySource(nameof(StandardMetricTests.ValidateStandardMetricsSuppressedByActivityTag));
+            var traceTelemetryItems = new List<TelemetryItem>();
+            var metricTelemetryItems = new List<TelemetryItem>();
+
+            var options = new AzureMonitorExporterOptions { EnablePerformanceCounters = false };
+            var standardMetricCustomProcessor = new StandardMetricsExtractionProcessor(new AzureMonitorMetricExporter(new MockTransmitter(metricTelemetryItems)), options);
+
+            using var tracerProvider = Sdk.CreateTracerProviderBuilder()
+                .SetSampler(new AlwaysOnSampler())
+                .AddSource(nameof(StandardMetricTests.ValidateStandardMetricsSuppressedByActivityTag))
+                .AddProcessor(standardMetricCustomProcessor)
+                .AddProcessor(new BatchActivityExportProcessor(new AzureMonitorTraceExporter(new AzureMonitorExporterOptions(), new MockTransmitter(traceTelemetryItems))))
+                .Build();
+
+            using (var activity = activitySource.StartActivity("Test", ActivityKind.Server))
+            {
+                activity?.SetTag(SemanticConventions.AttributeHttpStatusCode, 200);
+                activity?.SetTag(StandardMetricsExtractionProcessor.SuppressStandardMetricsAttributeName, true);
+            }
+
+            tracerProvider?.ForceFlush();
+            WaitForActivityExport(traceTelemetryItems);
+            standardMetricCustomProcessor._meterProvider?.Value?.ForceFlush();
+
+            var requestMetric = GetMetricTelemetry(metricTelemetryItems, StandardMetricConstants.RequestDurationMetricIdValue);
+            Assert.Null(requestMetric);
+        }
+
+        [Fact]
         public void ValidateStandardMetricsDisabled()
         {
             var activitySource = new ActivitySource(nameof(StandardMetricTests.ValidateStandardMetricsDisabled));

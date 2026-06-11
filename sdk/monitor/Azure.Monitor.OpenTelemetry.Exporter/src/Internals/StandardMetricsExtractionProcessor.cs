@@ -56,6 +56,8 @@ namespace Azure.Monitor.OpenTelemetry.Exporter.Internals
         private DateTimeOffset _lastExceptionRateCalculationTime = DateTimeOffset.UtcNow;
         private long _lastExceptionCount = 0;
 
+        internal const string SuppressStandardMetricsAttributeName = "faithlife.suppress_standard_metrics";
+
         internal static readonly IReadOnlyDictionary<string, string> s_standardMetricNameMapping = new Dictionary<string, string>()
         {
             [StandardMetricConstants.RequestDurationInstrumentName] = StandardMetricConstants.RequestDurationMetricIdValue,
@@ -148,6 +150,11 @@ namespace Azure.Monitor.OpenTelemetry.Exporter.Internals
         {
             EnsureMeterProviderInitialized();
 
+            if (ShouldSuppressStandardMetrics(activity))
+            {
+                return;
+            }
+
             if (activity.Kind == ActivityKind.Server || activity.Kind == ActivityKind.Consumer)
             {
                 if (_requestDuration != null && _requestDuration.Enabled)
@@ -170,6 +177,19 @@ namespace Azure.Monitor.OpenTelemetry.Exporter.Internals
                     ReportDependencyDurationMetric(activity);
                 }
             }
+        }
+
+        private static bool ShouldSuppressStandardMetrics(Activity activity)
+        {
+            foreach (ref readonly var tag in activity.EnumerateTagObjects())
+            {
+                if (tag.Key == SuppressStandardMetricsAttributeName && tag.Value is true)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private void ReportRequestDurationMetric(Activity activity)
