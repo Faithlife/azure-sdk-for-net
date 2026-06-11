@@ -1,10 +1,15 @@
 # Release History
 
-## 1.9.0-faithlife.1 (2026-06-01)
+## 1.9.0-faithlife.2 (2026-06-11)
 
 ### Features Added
 
 - Added support for the Microsoft OpenTelemetry distro's SDK statistics: a new internal meter subscription and an AppContext switch (`Azure.Monitor.OpenTelemetry.Exporter.RouteSdkStatsToDistroEndpoint`) that lets the distro redirect SDK statistics to its own ingestion path.
+
+## 1.9.0-faithlife.1 (2026-06-01)
+
+### Features Added
+
 - Logs are not submitted to Azure Monitor (to reduce ingestion costs).
 - Remove client-side sampling. All telemetry is sent.
 

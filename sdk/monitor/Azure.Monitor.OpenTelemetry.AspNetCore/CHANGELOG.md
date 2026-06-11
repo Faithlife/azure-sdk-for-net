@@ -1,5 +1,11 @@
 # Release History
 
+## 1.6.0-faithlife.2 (2026-06-11)
+
+### Features Added
+
+* Depends on `Azure.Monitor.OpenTelemetry.Exporter` 1.9.0-faithlife.2.
+
 ## 1.6.0-faithlife.1 (2026-06-01)
 
 ### Features Added
