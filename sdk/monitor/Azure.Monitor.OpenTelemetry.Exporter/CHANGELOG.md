@@ -4,8 +4,9 @@
 
 ### Features Added
 
-* Logs are not submitted to Azure Monitor (to reduce ingestion costs).
-* Remove client-side sampling. All telemetry is sent.
+- Added support for the Microsoft OpenTelemetry distro's SDK statistics: a new internal meter subscription and an AppContext switch (`Azure.Monitor.OpenTelemetry.Exporter.RouteSdkStatsToDistroEndpoint`) that lets the distro redirect SDK statistics to its own ingestion path.
+- Logs are not submitted to Azure Monitor (to reduce ingestion costs).
+- Remove client-side sampling. All telemetry is sent.
 
 ### Breaking Changes
 
