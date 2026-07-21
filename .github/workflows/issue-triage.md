@@ -18,7 +18,15 @@ on:
   roles: all
   reaction: eyes
 
-permissions: read-all
+permissions:
+  contents: read
+  actions: read
+  issues: read
+  pull-requests: read
+  copilot-requests: write
+
+features:
+  copilot-requests: true
 
 network:
   allowed:
