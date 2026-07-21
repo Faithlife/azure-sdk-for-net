@@ -26,6 +26,10 @@ permissions:
   pull-requests: read
   actions: read
   checks: read
+  copilot-requests: write
+
+features:
+  copilot-requests: true
 network:
   allowed:
     - defaults
