@@ -1,6 +1,6 @@
 # Release History
 
-## 1.9.0-faithlife.4 (Unreleased)
+## 1.9.0-faithlife.4 (2026-08-11)
 
 ### Features Added
 
