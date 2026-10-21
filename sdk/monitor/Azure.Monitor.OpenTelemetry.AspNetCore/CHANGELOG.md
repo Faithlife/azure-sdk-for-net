@@ -1,10 +1,11 @@
 # Release History
 
-## 1.6.1-faithlife.5 (Unreleased)
+## 1.6.1-faithlife.5 (2026-10-21)
 
 ### Bugs Fixed
 
 * The Azure VM resource detector no longer sets `service.instance.id` to the VM ID, so Cloud Role Instance is reported as the host name (as with the classic Application Insights SDK) instead of a GUID.
+* Depends on `Azure.Monitor.OpenTelemetry.Exporter` 1.10.1-faithlife.5.
 
 ## 1.6.1-faithlife.4 (2026-08-11)
 

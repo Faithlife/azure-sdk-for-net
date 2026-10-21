@@ -1,6 +1,6 @@
 # Release History
 
-## 1.11.0-beta.1 (Unreleased)
+## 1.10.1-faithlife.5 (2026-10-21)
 
 ### Features Added
 
@@ -13,21 +13,12 @@
 
 - Uploading telemetry from offline storage (at startup, on retry, and at shutdown) is no longer recorded as an HTTP dependency by HttpClient instrumentation.
   ([#63821](https://github.com/Azure/azure-sdk-for-net/issues/63821))
+- Fixed an issue where partial success responses with only non-retriable telemetry drops enabled exporter backoff. This could interrupt telemetry export when ingestion sampling is enabled.
+  ([#48141](https://github.com/Azure/azure-sdk-for-net/issues/48141))
 
 ### Other Changes
 
-## 1.10.1-faithlife.5 (Unreleased)
-
-### Features Added
-
-- Include changes from the official 1.10.0 release.
-
-### Breaking Changes
-
 ### Bugs Fixed
-
-* Fixed an issue where partial success responses with only non-retriable telemetry drops enabled exporter backoff. This could interrupt telemetry export when ingestion sampling is enabled.
-  ([#48141](https://github.com/Azure/azure-sdk-for-net/issues/48141))
 
 ### Other Changes
 
