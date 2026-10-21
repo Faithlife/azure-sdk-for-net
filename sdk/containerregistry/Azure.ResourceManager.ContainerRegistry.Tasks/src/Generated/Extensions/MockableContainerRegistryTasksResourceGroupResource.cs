@@ -45,7 +45,7 @@ namespace Azure.ResourceManager.ContainerRegistry.Tasks.Mocking
         /// <returns> An object representing collection of ContainerRegistryAgentPools and their operations over a ContainerRegistryAgentPoolResource. </returns>
         public virtual ContainerRegistryAgentPoolCollection GetContainerRegistryAgentPools(string registryName)
         {
-            return GetCachedClient(client => new ContainerRegistryAgentPoolCollection(client, Id, registryName));
+            return new ContainerRegistryAgentPoolCollection(Client, Id, registryName);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Azure.ResourceManager.ContainerRegistry.Tasks.Mocking
         /// <returns> An object representing collection of ContainerRegistryRuns and their operations over a ContainerRegistryRunResource. </returns>
         public virtual ContainerRegistryRunCollection GetContainerRegistryRuns(string registryName)
         {
-            return GetCachedClient(client => new ContainerRegistryRunCollection(client, Id, registryName));
+            return new ContainerRegistryRunCollection(Client, Id, registryName);
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace Azure.ResourceManager.ContainerRegistry.Tasks.Mocking
         /// <returns> An object representing collection of ContainerRegistryTaskRuns and their operations over a ContainerRegistryTaskRunResource. </returns>
         public virtual ContainerRegistryTaskRunCollection GetContainerRegistryTaskRuns(string registryName)
         {
-            return GetCachedClient(client => new ContainerRegistryTaskRunCollection(client, Id, registryName));
+            return new ContainerRegistryTaskRunCollection(Client, Id, registryName);
         }
 
         /// <summary>
@@ -249,7 +249,7 @@ namespace Azure.ResourceManager.ContainerRegistry.Tasks.Mocking
         /// <returns> An object representing collection of ContainerRegistryTasks and their operations over a ContainerRegistryTaskResource. </returns>
         public virtual ContainerRegistryTaskCollection GetContainerRegistryTasks(string registryName)
         {
-            return GetCachedClient(client => new ContainerRegistryTaskCollection(client, Id, registryName));
+            return new ContainerRegistryTaskCollection(Client, Id, registryName);
         }
 
         /// <summary>
@@ -435,11 +435,11 @@ namespace Azure.ResourceManager.ContainerRegistry.Tasks.Mocking
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="registryName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="registryName"/> is an empty string, and was expected to be non-empty. </exception>
-        public virtual async Task<Response<ContainerRegistryTaskSourceUploadResult>> GetBuildSourceUploadUrlAsync(string registryName, CancellationToken cancellationToken = default)
+        public virtual async Task<Response<ContainerRegistryTaskSourceUploadResult>> GetBuildSourceUploadUriAsync(string registryName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNullOrEmpty(registryName, nameof(registryName));
 
-            using DiagnosticScope scope = RegistriesClientDiagnostics.CreateScope("MockableContainerRegistryTasksResourceGroupResource.GetBuildSourceUploadUrl");
+            using DiagnosticScope scope = RegistriesClientDiagnostics.CreateScope("MockableContainerRegistryTasksResourceGroupResource.GetBuildSourceUploadUri");
             scope.Start();
             try
             {
@@ -484,11 +484,11 @@ namespace Azure.ResourceManager.ContainerRegistry.Tasks.Mocking
         /// <param name="cancellationToken"> The cancellation token to use. </param>
         /// <exception cref="ArgumentNullException"> <paramref name="registryName"/> is null. </exception>
         /// <exception cref="ArgumentException"> <paramref name="registryName"/> is an empty string, and was expected to be non-empty. </exception>
-        public virtual Response<ContainerRegistryTaskSourceUploadResult> GetBuildSourceUploadUrl(string registryName, CancellationToken cancellationToken = default)
+        public virtual Response<ContainerRegistryTaskSourceUploadResult> GetBuildSourceUploadUri(string registryName, CancellationToken cancellationToken = default)
         {
             Argument.AssertNotNullOrEmpty(registryName, nameof(registryName));
 
-            using DiagnosticScope scope = RegistriesClientDiagnostics.CreateScope("MockableContainerRegistryTasksResourceGroupResource.GetBuildSourceUploadUrl");
+            using DiagnosticScope scope = RegistriesClientDiagnostics.CreateScope("MockableContainerRegistryTasksResourceGroupResource.GetBuildSourceUploadUri");
             scope.Start();
             try
             {

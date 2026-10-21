@@ -6,6 +6,7 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using Azure;
 using Azure.ResourceManager.Elastic.Models;
 using Azure.ResourceManager.Models;
 
@@ -17,7 +18,6 @@ namespace Azure.ResourceManager.Elastic
     /// </summary>
     [ModelReaderWriterBuildable(typeof(ConnectedPartnerResourceInfo))]
     [ModelReaderWriterBuildable(typeof(ConnectedPartnerResourceProperties))]
-    [ModelReaderWriterBuildable(typeof(ConnectedPartnerResourcesListResponse))]
     [ModelReaderWriterBuildable(typeof(ElasticBillingInfoResult))]
     [ModelReaderWriterBuildable(typeof(ElasticCloudDeployment))]
     [ModelReaderWriterBuildable(typeof(ElasticCloudProperties))]
@@ -35,7 +35,6 @@ namespace Azure.ResourceManager.Elastic
     [ModelReaderWriterBuildable(typeof(ElasticMonitorPatch))]
     [ModelReaderWriterBuildable(typeof(ElasticMonitorProperties))]
     [ModelReaderWriterBuildable(typeof(ElasticMonitorResource))]
-    [ModelReaderWriterBuildable(typeof(ElasticMonitorResourceListResponse))]
     [ModelReaderWriterBuildable(typeof(ElasticMonitorUpgrade))]
     [ModelReaderWriterBuildable(typeof(ElasticOpenAIIntegrationData))]
     [ModelReaderWriterBuildable(typeof(ElasticOpenAIIntegrationProperties))]
@@ -58,20 +57,17 @@ namespace Azure.ResourceManager.Elastic
     [ModelReaderWriterBuildable(typeof(ElasticUserInfo))]
     [ModelReaderWriterBuildable(typeof(ElasticVersion))]
     [ModelReaderWriterBuildable(typeof(ElasticVersionProperties))]
-    [ModelReaderWriterBuildable(typeof(ElasticVersionsListResponse))]
     [ModelReaderWriterBuildable(typeof(ElasticVmListResult))]
     [ModelReaderWriterBuildable(typeof(ElasticVmResourceInfo))]
     [ModelReaderWriterBuildable(typeof(ManagedServiceIdentity))]
     [ModelReaderWriterBuildable(typeof(MarketplaceSaaSInfo))]
     [ModelReaderWriterBuildable(typeof(MarketplaceSaaSInfoMarketplaceSubscription))]
     [ModelReaderWriterBuildable(typeof(MonitoredResourceInfo))]
-    [ModelReaderWriterBuildable(typeof(MonitoredResourceListResponse))]
     [ModelReaderWriterBuildable(typeof(MonitoredSubscription))]
     [ModelReaderWriterBuildable(typeof(MonitoredSubscriptionPropertiesList))]
-    [ModelReaderWriterBuildable(typeof(MonitoringTagRulesListResponse))]
     [ModelReaderWriterBuildable(typeof(MonitorResourceProjectDetails))]
-    [ModelReaderWriterBuildable(typeof(OpenAIIntegrationRPModelListResponse))]
     [ModelReaderWriterBuildable(typeof(PartnerBillingEntity))]
+    [ModelReaderWriterBuildable(typeof(ResponseError))]
     [ModelReaderWriterBuildable(typeof(ResubscribeProperties))]
     [ModelReaderWriterBuildable(typeof(SystemData))]
     [ModelReaderWriterBuildable(typeof(UpgradableVersionListResult))]

@@ -6,6 +6,7 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using Azure;
 using Azure.ResourceManager.ExtendedLocations.Models;
 using Azure.ResourceManager.Models;
 
@@ -24,20 +25,15 @@ namespace Azure.ResourceManager.ExtendedLocations
     [ModelReaderWriterBuildable(typeof(CustomLocationFindTargetResourceGroupResult))]
     [ModelReaderWriterBuildable(typeof(CustomLocationListResult))]
     [ModelReaderWriterBuildable(typeof(CustomLocationOperationInfo))]
-    [ModelReaderWriterBuildable(typeof(CustomLocationOperationsList))]
-    [ModelReaderWriterBuildable(typeof(CustomLocationOperationValueDisplay))]
     [ModelReaderWriterBuildable(typeof(CustomLocationPatch))]
-    [ModelReaderWriterBuildable(typeof(CustomLocationProperties))]
     [ModelReaderWriterBuildable(typeof(CustomLocationResource))]
-    [ModelReaderWriterBuildable(typeof(EnabledResourceTypeProperties))]
     [ModelReaderWriterBuildable(typeof(ManagedServiceIdentity))]
     [ModelReaderWriterBuildable(typeof(ResourceSyncRuleData))]
-    [ModelReaderWriterBuildable(typeof(ResourceSyncRuleListResult))]
     [ModelReaderWriterBuildable(typeof(ResourceSyncRuleMatchExpression))]
     [ModelReaderWriterBuildable(typeof(ResourceSyncRulePatch))]
-    [ModelReaderWriterBuildable(typeof(ResourceSyncRuleProperties))]
     [ModelReaderWriterBuildable(typeof(ResourceSyncRulePropertiesSelector))]
     [ModelReaderWriterBuildable(typeof(ResourceSyncRuleResource))]
+    [ModelReaderWriterBuildable(typeof(ResponseError))]
     [ModelReaderWriterBuildable(typeof(SystemData))]
     [ModelReaderWriterBuildable(typeof(UserAssignedIdentity))]
     public partial class AzureResourceManagerExtendedLocationsContext : ModelReaderWriterContext

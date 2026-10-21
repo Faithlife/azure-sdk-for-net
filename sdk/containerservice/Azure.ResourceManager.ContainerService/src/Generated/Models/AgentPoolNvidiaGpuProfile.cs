@@ -12,7 +12,7 @@ using Azure.ResourceManager.ContainerService;
 namespace Azure.ResourceManager.ContainerService.Models
 {
     /// <summary> NVIDIA-specific GPU settings. </summary>
-    public partial class AgentPoolNvidiaGpuProfile
+    internal partial class AgentPoolNvidiaGpuProfile
     {
         /// <summary> Keeps track of any properties unknown to the library. </summary>
         private protected readonly IDictionary<string, BinaryData> _additionalBinaryDataProperties;
@@ -24,21 +24,15 @@ namespace Azure.ResourceManager.ContainerService.Models
 
         /// <summary> Initializes a new instance of <see cref="AgentPoolNvidiaGpuProfile"/>. </summary>
         /// <param name="managementMode"> The Managed GPU experience installs additional components, such as the Data Center GPU Manager (DCGM) metrics for monitoring, on top of the GPU driver for you. For more details of what is installed, check out aka.ms/aks/managed-gpu. </param>
-        /// <param name="migStrategy"> Sets the MIG (Multi-Instance GPU) strategy that will be used for managed MIG support. For more information about the different strategies, visit aka.ms/aks/managed-gpu. When not specified, the default is None. </param>
         /// <param name="additionalBinaryDataProperties"> Keeps track of any properties unknown to the library. </param>
-        internal AgentPoolNvidiaGpuProfile(GpuManagementMode? managementMode, MultiInstanceGpuStrategy? migStrategy, IDictionary<string, BinaryData> additionalBinaryDataProperties)
+        internal AgentPoolNvidiaGpuProfile(GpuManagementMode? managementMode, IDictionary<string, BinaryData> additionalBinaryDataProperties)
         {
             ManagementMode = managementMode;
-            MigStrategy = migStrategy;
             _additionalBinaryDataProperties = additionalBinaryDataProperties;
         }
 
         /// <summary> The Managed GPU experience installs additional components, such as the Data Center GPU Manager (DCGM) metrics for monitoring, on top of the GPU driver for you. For more details of what is installed, check out aka.ms/aks/managed-gpu. </summary>
         [WirePath("managementMode")]
         public GpuManagementMode? ManagementMode { get; set; }
-
-        /// <summary> Sets the MIG (Multi-Instance GPU) strategy that will be used for managed MIG support. For more information about the different strategies, visit aka.ms/aks/managed-gpu. When not specified, the default is None. </summary>
-        [WirePath("migStrategy")]
-        public MultiInstanceGpuStrategy? MigStrategy { get; set; }
     }
 }

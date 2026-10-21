@@ -6,6 +6,7 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using Azure;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.PrivateDns.Models;
 using Azure.ResourceManager.Resources.Models;
@@ -27,7 +28,6 @@ namespace Azure.ResourceManager.PrivateDns
     [ModelReaderWriterBuildable(typeof(PrivateDnsPtrRecordInfo))]
     [ModelReaderWriterBuildable(typeof(PrivateDnsPtrRecordResource))]
     [ModelReaderWriterBuildable(typeof(PrivateDnsRecordData))]
-    [ModelReaderWriterBuildable(typeof(PrivateDnsRecordSetProperties))]
     [ModelReaderWriterBuildable(typeof(PrivateDnsSoaRecordInfo))]
     [ModelReaderWriterBuildable(typeof(PrivateDnsSoaRecordResource))]
     [ModelReaderWriterBuildable(typeof(PrivateDnsSrvRecordInfo))]
@@ -37,12 +37,10 @@ namespace Azure.ResourceManager.PrivateDns
     [ModelReaderWriterBuildable(typeof(PrivateDnsZoneData))]
     [ModelReaderWriterBuildable(typeof(PrivateDnsZoneResource))]
     [ModelReaderWriterBuildable(typeof(PrivateZoneListResult))]
-    [ModelReaderWriterBuildable(typeof(PrivateZoneProperties))]
-    [ModelReaderWriterBuildable(typeof(RecordSetListResult))]
+    [ModelReaderWriterBuildable(typeof(ResponseError))]
     [ModelReaderWriterBuildable(typeof(SystemData))]
     [ModelReaderWriterBuildable(typeof(VirtualNetworkLinkData))]
     [ModelReaderWriterBuildable(typeof(VirtualNetworkLinkListResult))]
-    [ModelReaderWriterBuildable(typeof(VirtualNetworkLinkProperties))]
     [ModelReaderWriterBuildable(typeof(VirtualNetworkLinkResource))]
     [ModelReaderWriterBuildable(typeof(WritableSubResource))]
     public partial class AzureResourceManagerPrivateDnsContext : ModelReaderWriterContext

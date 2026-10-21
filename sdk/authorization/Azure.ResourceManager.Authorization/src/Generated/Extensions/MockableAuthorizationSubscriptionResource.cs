@@ -42,11 +42,23 @@ namespace Azure.ResourceManager.Authorization.Mocking
 
         private ClientDiagnostics DenyAssignmentsClientDiagnostics => _denyAssignmentsClientDiagnostics ??= new ClientDiagnostics("Azure.ResourceManager.Authorization.Mocking", ProviderConstants.DefaultProviderNamespace, Diagnostics);
 
-        private DenyAssignments DenyAssignmentsRestClient => _denyAssignmentsRestClient ??= new DenyAssignments(DenyAssignmentsClientDiagnostics, Pipeline, Diagnostics.ApplicationId, Endpoint, "2024-07-01-preview");
+        private DenyAssignments DenyAssignmentsRestClient => _denyAssignmentsRestClient ??= new DenyAssignments(
+            DenyAssignmentsClientDiagnostics,
+            Pipeline,
+            Diagnostics.ApplicationId,
+            Endpoint,
+            "2024-07-01-preview",
+            resourceType => TryGetApiVersion(resourceType, out string apiVersion) ? apiVersion : null);
 
         private ClientDiagnostics RoleAssignmentsClientDiagnostics => _roleAssignmentsClientDiagnostics ??= new ClientDiagnostics("Azure.ResourceManager.Authorization.Mocking", ProviderConstants.DefaultProviderNamespace, Diagnostics);
 
-        private RoleAssignments RoleAssignmentsRestClient => _roleAssignmentsRestClient ??= new RoleAssignments(RoleAssignmentsClientDiagnostics, Pipeline, Diagnostics.ApplicationId, Endpoint, "2022-04-01");
+        private RoleAssignments RoleAssignmentsRestClient => _roleAssignmentsRestClient ??= new RoleAssignments(
+            RoleAssignmentsClientDiagnostics,
+            Pipeline,
+            Diagnostics.ApplicationId,
+            Endpoint,
+            "2022-04-01",
+            resourceType => TryGetApiVersion(resourceType, out string apiVersion) ? apiVersion : null);
 
         private ClientDiagnostics ClassicAdministratorsClientDiagnostics => _classicAdministratorsClientDiagnostics ??= new ClientDiagnostics("Azure.ResourceManager.Authorization.Mocking", ProviderConstants.DefaultProviderNamespace, Diagnostics);
 
@@ -235,7 +247,7 @@ namespace Azure.ResourceManager.Authorization.Mocking
             {
                 CancellationToken = cancellationToken
             };
-            return new AsyncPageableWrapper<DenyAssignmentData, DenyAssignmentResource>(new DenyAssignmentsGetAllAsyncCollectionResultOfT(DenyAssignmentsRestClient, Id.SubscriptionId, filter, context, "MockableAuthorizationSubscriptionResource.GetDenyAssignments"), data => new DenyAssignmentResource(Client, data));
+            return new AsyncPageableWrapper<DenyAssignmentData, DenyAssignmentResource>(new DenyAssignmentDataAsync1CollectionResultOfT(DenyAssignmentsRestClient, Guid.Parse(Id.SubscriptionId), filter, context, "MockableAuthorizationSubscriptionResource.GetDenyAssignments"), data => new DenyAssignmentResource(Client, data));
         }
 
         /// <summary>
@@ -264,7 +276,7 @@ namespace Azure.ResourceManager.Authorization.Mocking
             {
                 CancellationToken = cancellationToken
             };
-            return new PageableWrapper<DenyAssignmentData, DenyAssignmentResource>(new DenyAssignmentsGetAllCollectionResultOfT(DenyAssignmentsRestClient, Id.SubscriptionId, filter, context, "MockableAuthorizationSubscriptionResource.GetDenyAssignments"), data => new DenyAssignmentResource(Client, data));
+            return new PageableWrapper<DenyAssignmentData, DenyAssignmentResource>(new DenyAssignmentData1CollectionResultOfT(DenyAssignmentsRestClient, Guid.Parse(Id.SubscriptionId), filter, context, "MockableAuthorizationSubscriptionResource.GetDenyAssignments"), data => new DenyAssignmentResource(Client, data));
         }
 
         /// <summary>
@@ -294,9 +306,9 @@ namespace Azure.ResourceManager.Authorization.Mocking
             {
                 CancellationToken = cancellationToken
             };
-            return new AsyncPageableWrapper<RoleAssignmentData, RoleAssignmentResource>(new RoleAssignmentsGetForSubscriptionAsyncCollectionResultOfT(
+            return new AsyncPageableWrapper<RoleAssignmentData, RoleAssignmentResource>(new RoleAssignmentDataAsync0CollectionResultOfT(
                 RoleAssignmentsRestClient,
-                Id.SubscriptionId,
+                Guid.Parse(Id.SubscriptionId),
                 filter,
                 tenantId,
                 context,
@@ -330,9 +342,9 @@ namespace Azure.ResourceManager.Authorization.Mocking
             {
                 CancellationToken = cancellationToken
             };
-            return new PageableWrapper<RoleAssignmentData, RoleAssignmentResource>(new RoleAssignmentsGetForSubscriptionCollectionResultOfT(
+            return new PageableWrapper<RoleAssignmentData, RoleAssignmentResource>(new RoleAssignmentData0CollectionResultOfT(
                 RoleAssignmentsRestClient,
-                Id.SubscriptionId,
+                Guid.Parse(Id.SubscriptionId),
                 filter,
                 tenantId,
                 context,
@@ -364,7 +376,7 @@ namespace Azure.ResourceManager.Authorization.Mocking
             {
                 CancellationToken = cancellationToken
             };
-            return new ClassicAdministratorsGetClassicAdministratorsAsyncCollectionResultOfT(ClassicAdministratorsRestClient, Id.SubscriptionId, context, "MockableAuthorizationSubscriptionResource.GetClassicAdministrators");
+            return new AuthorizationClassicAdministratorAsyncCollectionResultOfT(ClassicAdministratorsRestClient, Guid.Parse(Id.SubscriptionId), context, "MockableAuthorizationSubscriptionResource.GetClassicAdministrators");
         }
 
         /// <summary>
@@ -392,7 +404,7 @@ namespace Azure.ResourceManager.Authorization.Mocking
             {
                 CancellationToken = cancellationToken
             };
-            return new ClassicAdministratorsGetClassicAdministratorsCollectionResultOfT(ClassicAdministratorsRestClient, Id.SubscriptionId, context, "MockableAuthorizationSubscriptionResource.GetClassicAdministrators");
+            return new AuthorizationClassicAdministratorCollectionResultOfT(ClassicAdministratorsRestClient, Guid.Parse(Id.SubscriptionId), context, "MockableAuthorizationSubscriptionResource.GetClassicAdministrators");
         }
     }
 }

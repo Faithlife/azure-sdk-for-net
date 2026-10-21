@@ -6,6 +6,7 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using Azure;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.NetApp.Models;
 
@@ -16,7 +17,6 @@ namespace Azure.ResourceManager.NetApp
     /// For more information <see href='https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/core/System.ClientModel/src/docs/ModelReaderWriterContext.md' />
     /// </summary>
     [ModelReaderWriterBuildable(typeof(AccountProperties))]
-    [ModelReaderWriterBuildable(typeof(AccountPropertiesPatch))]
     [ModelReaderWriterBuildable(typeof(ActiveDirectoryConfigProperties))]
     [ModelReaderWriterBuildable(typeof(AvailabilityZoneMapping))]
     [ModelReaderWriterBuildable(typeof(BackupPatchProperties))]
@@ -46,31 +46,25 @@ namespace Azure.ResourceManager.NetApp
     [ModelReaderWriterBuildable(typeof(ClusterPeerCommandResult))]
     [ModelReaderWriterBuildable(typeof(CredentialsKeyVaultDetails))]
     [ModelReaderWriterBuildable(typeof(ElasticAccountProperties))]
-    [ModelReaderWriterBuildable(typeof(ElasticAccountUpdateProperties))]
     [ModelReaderWriterBuildable(typeof(ElasticBackupPolicyProperties))]
     [ModelReaderWriterBuildable(typeof(ElasticBackupProperties))]
-    [ModelReaderWriterBuildable(typeof(ElasticBackupVaultProperties))]
     [ModelReaderWriterBuildable(typeof(ElasticCapacityPoolProperties))]
     [ModelReaderWriterBuildable(typeof(ElasticEncryption))]
     [ModelReaderWriterBuildable(typeof(ElasticEncryptionConfiguration))]
     [ModelReaderWriterBuildable(typeof(ElasticEncryptionIdentity))]
-    [ModelReaderWriterBuildable(typeof(ElasticExportPolicy))]
     [ModelReaderWriterBuildable(typeof(ElasticExportPolicyRule))]
     [ModelReaderWriterBuildable(typeof(ElasticKeyVaultProperties))]
     [ModelReaderWriterBuildable(typeof(ElasticMountTargetProperties))]
-    [ModelReaderWriterBuildable(typeof(ElasticSmbProperties))]
     [ModelReaderWriterBuildable(typeof(ElasticSnapshotPolicyDailySchedule))]
     [ModelReaderWriterBuildable(typeof(ElasticSnapshotPolicyHourlySchedule))]
     [ModelReaderWriterBuildable(typeof(ElasticSnapshotPolicyMonthlySchedule))]
     [ModelReaderWriterBuildable(typeof(ElasticSnapshotPolicyProperties))]
     [ModelReaderWriterBuildable(typeof(ElasticSnapshotPolicyWeeklySchedule))]
-    [ModelReaderWriterBuildable(typeof(ElasticSnapshotProperties))]
     [ModelReaderWriterBuildable(typeof(ElasticVolumeBackupProperties))]
     [ModelReaderWriterBuildable(typeof(ElasticVolumeDataProtectionPatchProperties))]
     [ModelReaderWriterBuildable(typeof(ElasticVolumeDataProtectionProperties))]
     [ModelReaderWriterBuildable(typeof(ElasticVolumeProperties))]
     [ModelReaderWriterBuildable(typeof(ElasticVolumeRevert))]
-    [ModelReaderWriterBuildable(typeof(ElasticVolumeSnapshotProperties))]
     [ModelReaderWriterBuildable(typeof(EntraIdAkvConfig))]
     [ModelReaderWriterBuildable(typeof(EntraIdAkvConfigPatch))]
     [ModelReaderWriterBuildable(typeof(EntraIdConfig))]
@@ -228,6 +222,7 @@ namespace Azure.ResourceManager.NetApp
     [ModelReaderWriterBuildable(typeof(RegionInfoResourceData))]
     [ModelReaderWriterBuildable(typeof(RelocateVolumeContent))]
     [ModelReaderWriterBuildable(typeof(RemotePath))]
+    [ModelReaderWriterBuildable(typeof(ResponseError))]
     [ModelReaderWriterBuildable(typeof(SnapshotPoliciesList))]
     [ModelReaderWriterBuildable(typeof(SnapshotPolicyDailySchedule))]
     [ModelReaderWriterBuildable(typeof(SnapshotPolicyData))]

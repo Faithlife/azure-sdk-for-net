@@ -13,6 +13,11 @@ namespace Azure.AI.Projects.Agents.Tests
 {
     public class AgentsTestEnvironment : TestEnvironment
     {
+        public AgentsTestEnvironment()
+        {
+            PathToTestResourceBootstrappingScript = AiTestEnvironmentBootstrap.BootstrappingScriptPath;
+        }
+
         public string FOUNDRY_PROJECT_ENDPOINT => GetRecordedVariable(nameof(FOUNDRY_PROJECT_ENDPOINT), options => options.IsSecret("https://sanitized-host.services.ai.azure.com/api/projects/sanitized-project"));
         public string FOUNDRY_MODEL_NAME => GetRecordedVariable(nameof(FOUNDRY_MODEL_NAME));
         public string FOUNDRY_MODEL_NAME2 => GetRecordedVariable(nameof(FOUNDRY_MODEL_NAME2));
@@ -27,6 +32,7 @@ namespace Azure.AI.Projects.Agents.Tests
         public string BING_CONNECTION_ID => GetRecordedVariable(nameof(BING_CONNECTION_ID));
         public string A2A_CONNECTION_ID => GetRecordedVariable(nameof(A2A_CONNECTION_ID));
         public string PLAYWRIGHT_CONNECTION_ID => GetRecordedVariable(nameof(PLAYWRIGHT_CONNECTION_ID));
+        public string BROWSER_AUTOMATION_NAME => GetRecordedOptionalVariable(nameof(BROWSER_AUTOMATION_NAME));
         public string SHAREPOINT_CONNECTION_ID => GetRecordedVariable(nameof(SHAREPOINT_CONNECTION_ID));
         public string FABRIC_CONNECTION_ID => GetRecordedVariable(nameof(FABRIC_CONNECTION_ID));
         public string STORAGE_QUEUE_URI => GetRecordedVariable(nameof(STORAGE_QUEUE_URI));
@@ -34,6 +40,7 @@ namespace Azure.AI.Projects.Agents.Tests
         public string HOSTED_AGENT_VERSION => GetRecordedVariable(nameof(HOSTED_AGENT_VERSION));
         public string FOUNDRY_AGENT_CONTAINER_IMAGE => GetRecordedVariable(nameof(FOUNDRY_AGENT_CONTAINER_IMAGE));
         public string WORKIQ_CONNECTION_ID => GetRecordedVariable(nameof(WORKIQ_CONNECTION_ID));
+        public string WEBIQ_CONNECTION_ID => GetRecordedVariable(nameof(WEBIQ_CONNECTION_ID));
         public string FABRIC_IQ_CONNECTION_ID => GetRecordedVariable(nameof(FABRIC_IQ_CONNECTION_ID));
         public override Dictionary<string, string> ParseEnvironmentFile()
         {

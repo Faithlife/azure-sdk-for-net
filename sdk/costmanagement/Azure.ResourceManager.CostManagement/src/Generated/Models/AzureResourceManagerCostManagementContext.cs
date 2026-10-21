@@ -6,6 +6,7 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using Azure;
 using Azure.ResourceManager.CostManagement.Models;
 using Azure.ResourceManager.Models;
 
@@ -43,7 +44,7 @@ namespace Azure.ResourceManager.CostManagement
     [ModelReaderWriterBuildable(typeof(CostAllocationEntity))]
     [ModelReaderWriterBuildable(typeof(CostAllocationProportion))]
     [ModelReaderWriterBuildable(typeof(CostAllocationRuleCheckNameAvailabilityRequest))]
-    [ModelReaderWriterBuildable(typeof(CostAllocationRuleCheckNameAvailabilityResponse))]
+    [ModelReaderWriterBuildable(typeof(CostAllocationRuleCheckNameAvailabilityResult))]
     [ModelReaderWriterBuildable(typeof(CostAllocationRuleData))]
     [ModelReaderWriterBuildable(typeof(CostAllocationRuleDetails))]
     [ModelReaderWriterBuildable(typeof(CostAllocationRuleList))]
@@ -138,6 +139,7 @@ namespace Azure.ResourceManager.CostManagement
     [ModelReaderWriterBuildable(typeof(ReportOperationStatus))]
     [ModelReaderWriterBuildable(typeof(ReportURL))]
     [ModelReaderWriterBuildable(typeof(Models.RequestContext))]
+    [ModelReaderWriterBuildable(typeof(ResponseError))]
     [ModelReaderWriterBuildable(typeof(SavingsPlanUtilizationSummary))]
     [ModelReaderWriterBuildable(typeof(SavingsPlanUtilizationSummaryProperties))]
     [ModelReaderWriterBuildable(typeof(ScheduledActionData))]
