@@ -197,6 +197,40 @@ namespace Azure.Monitor.OpenTelemetry.Exporter.Tests
         }
 
         [Fact]
+        public void PermanentlyDroppedTelemetryFromStorageDoesNotEnableBackOff()
+        {
+            using var activity = CreateActivity("TestActivity");
+            var telemetryItem = CreateTelemetryItem(activity);
+            List<TelemetryItem> telemetryItems = new List<TelemetryItem>();
+            telemetryItems.Add(telemetryItem);
+
+            // Transmit
+            var mockResponseError = new MockResponse(500).SetContent("Internal Server Error");
+            var mockResponseDropped = new MockResponse(206).SetContent("{\"itemsReceived\": 1,\"itemsAccepted\": 0,\"errors\":[{\"index\": 0,\"statusCode\": 400,\"message\": \"Telemetry sampled out.\"}]}");
+            var transmitter = GetTransmitter(mockResponseError, mockResponseDropped);
+
+            var telemetrySchemaTypeCounter = new TelemetrySchemaTypeCounter();
+            transmitter.TrackAsync(telemetryItems, telemetrySchemaTypeCounter, TelemetryItemOrigin.UnitTest, false, CancellationToken.None).EnsureCompleted();
+
+            //Assert
+            Assert.NotNull(transmitter._fileBlobProvider);
+            Assert.Single(transmitter._fileBlobProvider.GetBlobs());
+
+            // Reset transmission state
+            transmitter._transmissionStateManager.ResetConsecutiveErrors();
+            transmitter._transmissionStateManager.CloseTransmission();
+
+            transmitter._transmitFromStorageHandler?.TransmitFromStorage(null, null);
+
+            // Assert
+            // Blob will be deleted because the telemetry was permanently dropped, and this is not a failure that requires back off.
+            Assert.Empty(transmitter._fileBlobProvider.GetBlobs());
+            Assert.Equal(TransmissionState.Closed, transmitter._transmissionStateManager.State);
+
+            transmitter.Dispose();
+        }
+
+        [Fact]
         public void TelemetryIsNotTransmittedWhenTransmissionStateIsOpen()
         {
             using var activity = CreateActivity("TestActivity");
