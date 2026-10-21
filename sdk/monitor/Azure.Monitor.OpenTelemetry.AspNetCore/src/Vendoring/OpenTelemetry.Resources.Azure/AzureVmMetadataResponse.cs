@@ -59,7 +59,6 @@ internal sealed class AzureVmMetadataResponse
                 amsValue = this.ResourceId;
                 break;
             case ResourceSemanticConventions.AttributeHostId:
-            case ResourceSemanticConventions.AttributeServiceInstance:
                 amsValue = this.VmId;
                 break;
             case ResourceSemanticConventions.AttributeHostName:

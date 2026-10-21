@@ -22,8 +22,7 @@ internal sealed class AzureVMResourceDetector : IResourceDetector
         ResourceSemanticConventions.AttributeHostName,
         ResourceSemanticConventions.AttributeHostType,
         ResourceSemanticConventions.AttributeOsType,
-        ResourceSemanticConventions.AttributeOsVersion,
-        ResourceSemanticConventions.AttributeServiceInstance
+        ResourceSemanticConventions.AttributeOsVersion
     ];
 
     private static Resource? vmResource;
