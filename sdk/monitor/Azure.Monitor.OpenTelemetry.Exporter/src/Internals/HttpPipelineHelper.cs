@@ -444,10 +444,6 @@ namespace Azure.Monitor.OpenTelemetry.Exporter.Internals
                     result.ExportResult = ExportResult.Success;
                 }
 
-                // If there is no partialContent, it means all items were either successful or permanently dropped (which does not need to be retried)
-                if (partialContent == null)
-                    result.ExportResult = ExportResult.Success;
-
                 return;
             }
 
