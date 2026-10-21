@@ -245,12 +245,6 @@
       ]
     },
     {
-      "filename": "**/sdk/astronomer/**/*.cs",
-      "words": [
-        "astro"
-      ]
-    },
-    {
       "filename": "**/sdk/automanage/**/*.cs",
       "words": [
         "hcrp"
@@ -775,13 +769,6 @@
       ]
     },
     {
-      "filename": "**/sdk/kubernetesconfiguration/**/*.cs",
-      "words": [
-        "kustomization",
-        "kustomizations"
-      ]
-    },
-    {
       "filename": "**/sdk/logic/**/*.cs",
       "words": [
         "ccyymmdd",
@@ -1058,39 +1045,6 @@
       ]
     },
     {
-      "filename": "**/sdk/oracle/**/*.cs",
-      "words": [
-        "adbbackupid",
-        "adbscharsetname",
-        "adbsncharsetname",
-        "autonomousdbversionsname",
-        "cloudexadatainfrastructurename",
-        "cloudvmclustername",
-        "dbnodeocid",
-        "dbserverocid",
-        "dbsystemshapename",
-        "dbversionsname",
-        "dnsprivateviewocid",
-        "ecpu",
-        "exadata",
-        "exadb",
-        "exascale",
-        "ezconnect",
-        "ezconnectplus",
-        "iorm",
-        "ncharacter",
-        "ocid",
-        "ocids",
-        "ocpu",
-        "oltp",
-        "ords",
-        "tcps",
-        "tpurgent",
-        "vmdb",
-        "vnic"
-      ]
-    },
-    {
       "filename": "**/sdk/orbital/**/*.cs",
       "words": [
         "eirpd",
@@ -1131,6 +1085,12 @@
       ]
     },
     {
+      "filename": "**/sdk/platformvalidation/**/*.cs",
+      "words": [
+        "mobo"
+      ]
+    },
+    {
       "filename": "**/sdk/policyinsights/**/*.cs",
       "words": [
         "remediations"
@@ -1148,14 +1108,6 @@
       "words": [
         "cname",
         "ptrdname"
-      ]
-    },
-    {
-      "filename": "**/sdk/providerhub/**/*.cs",
-      "words": [
-        "checkin",
-        "dsts",
-        "regionality"
       ]
     },
     {
@@ -1288,21 +1240,6 @@
       "filename": "**/sdk/sphere/**/*.cs",
       "words": [
         "nwfs"
-      ]
-    },
-    {
-      "filename": "**/sdk/sqlmanagement/**/*.cs",
-      "words": [
-        "cias",
-        "droppeded",
-        "dtcs",
-        "freemium",
-        "nchar",
-        "ntext",
-        "nvarchar",
-        "stdev",
-        "unrestorable",
-        "vcores"
       ]
     },
     {
@@ -1578,6 +1515,14 @@
         "deidentified",
         "deidentify",
         "healthdataaiservices"
+      ]
+    },
+    {
+      "filename": "**/sdk/dataai/**/*",
+      "words": [
+        "apim",
+        "rerank",
+        "reranker"
       ]
     },
     {

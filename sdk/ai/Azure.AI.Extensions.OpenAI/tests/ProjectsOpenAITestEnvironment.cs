@@ -13,6 +13,11 @@ namespace Azure.AI.Extensions.OpenAI.Tests
 {
     public class ProjectsOpenAITestEnvironment : TestEnvironment
     {
+        public ProjectsOpenAITestEnvironment()
+        {
+            PathToTestResourceBootstrappingScript = AiTestEnvironmentBootstrap.BootstrappingScriptPath;
+        }
+
         public string FOUNDRY_PROJECT_ENDPOINT => GetRecordedVariable(nameof(FOUNDRY_PROJECT_ENDPOINT), options => options.IsSecret("https://sanitized-host.services.ai.azure.com/api/projects/sanitized-project"));
         public string FOUNDRY_AGENT_NAME => WrappedGetRecordedVariable(nameof(FOUNDRY_AGENT_NAME), isSecret: false);
         public string FOUNDRY_MODEL_NAME => WrappedGetRecordedVariable(nameof(FOUNDRY_MODEL_NAME), isSecret: false);
@@ -32,6 +37,7 @@ namespace Azure.AI.Extensions.OpenAI.Tests
         public string BING_CUSTOM_SEARCH_INSTANCE_NAME => GetRecordedVariable(nameof(BING_CUSTOM_SEARCH_INSTANCE_NAME));
         public string MCP_PROJECT_CONNECTION_NAME => GetRecordedOptionalVariable(nameof(MCP_PROJECT_CONNECTION_NAME));
         public string PLAYWRIGHT_CONNECTION_NAME => GetRecordedOptionalVariable(nameof(PLAYWRIGHT_CONNECTION_NAME));
+        public string BROWSER_AUTOMATION_NAME => GetRecordedVariable(nameof(BROWSER_AUTOMATION_NAME));
         public string SHAREPOINT_CONNECTION_NAME => GetRecordedOptionalVariable(nameof(SHAREPOINT_CONNECTION_NAME));
         public string FABRIC_CONNECTION_NAME => GetRecordedOptionalVariable(nameof(FABRIC_CONNECTION_NAME));
         public string FABRIC_IQ_PROJECT_CONNECTION_NAME => GetRecordedOptionalVariable(nameof(FABRIC_IQ_PROJECT_CONNECTION_NAME));
@@ -44,6 +50,7 @@ namespace Azure.AI.Extensions.OpenAI.Tests
         public string FOUNDRY_AGENT_CONTAINER_IMAGE => GetRecordedVariable(nameof(FOUNDRY_AGENT_CONTAINER_IMAGE));
         public string WORKIQ_CONNECTION_NAME => GetRecordedVariable(nameof(WORKIQ_CONNECTION_NAME));
         public string RAI_POLICY_NAME => GetRecordedVariable(nameof(RAI_POLICY_NAME));
+        public string WEB_IQ_PROJECT_CONNECTION_NAME => GetRecordedVariable(nameof(WEB_IQ_PROJECT_CONNECTION_NAME));
         public string WrappedGetRecordedVariable(string key, bool isSecret = true)
         {
             try

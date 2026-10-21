@@ -6,6 +6,7 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using Azure;
 using Azure.ResourceManager.AlertsManagement.Models;
 using Azure.ResourceManager.Models;
 
@@ -18,8 +19,6 @@ namespace Azure.ResourceManager.AlertsManagement
     [ModelReaderWriterBuildable(typeof(AlertEnrichmentData))]
     [ModelReaderWriterBuildable(typeof(AlertEnrichmentItem))]
     [ModelReaderWriterBuildable(typeof(AlertEnrichmentProperties))]
-    [ModelReaderWriterBuildable(typeof(AlertEnrichmentsList))]
-    [ModelReaderWriterBuildable(typeof(AlertsList))]
     [ModelReaderWriterBuildable(typeof(AlertsManagementBaseDetails))]
     [ModelReaderWriterBuildable(typeof(AlertsManagementNotificationResult))]
     [ModelReaderWriterBuildable(typeof(AlertsManagementTriggeredRule))]
@@ -28,10 +27,12 @@ namespace Azure.ResourceManager.AlertsManagement
     [ModelReaderWriterBuildable(typeof(PrometheusEnrichmentItem))]
     [ModelReaderWriterBuildable(typeof(PrometheusInstantQuery))]
     [ModelReaderWriterBuildable(typeof(PrometheusRangeQuery))]
+    [ModelReaderWriterBuildable(typeof(ResponseError))]
     [ModelReaderWriterBuildable(typeof(ServiceAlertActionStatus))]
     [ModelReaderWriterBuildable(typeof(ServiceAlertActionSuppressedDetails))]
     [ModelReaderWriterBuildable(typeof(ServiceAlertActionTriggeredDetails))]
     [ModelReaderWriterBuildable(typeof(ServiceAlertChangeStateContent))]
+    [ModelReaderWriterBuildable(typeof(ServiceAlertCollectionGetAllOptions))]
     [ModelReaderWriterBuildable(typeof(ServiceAlertData))]
     [ModelReaderWriterBuildable(typeof(ServiceAlertEssentials))]
     [ModelReaderWriterBuildable(typeof(ServiceAlertMetadata))]
@@ -46,11 +47,9 @@ namespace Azure.ResourceManager.AlertsManagement
     [ModelReaderWriterBuildable(typeof(ServiceAlertSummaryGroup))]
     [ModelReaderWriterBuildable(typeof(ServiceAlertSummaryGroupItemInfo))]
     [ModelReaderWriterBuildable(typeof(ServiceAlertTenantResource))]
+    [ModelReaderWriterBuildable(typeof(SubscriptionResourceGetServiceAlertSummaryOptions))]
     [ModelReaderWriterBuildable(typeof(SystemData))]
-    [ModelReaderWriterBuildable(typeof(UnknownAlertEnrichmentItem))]
-    [ModelReaderWriterBuildable(typeof(UnknownAlertsManagementBaseDetails))]
     [ModelReaderWriterBuildable(typeof(UnknownAlertsMetaDataProperties))]
-    [ModelReaderWriterBuildable(typeof(UnknownPrometheusEnrichmentItem))]
     public partial class AzureResourceManagerAlertsManagementContext : ModelReaderWriterContext
     {
     }

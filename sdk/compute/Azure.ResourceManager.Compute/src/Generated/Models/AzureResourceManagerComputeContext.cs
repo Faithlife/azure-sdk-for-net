@@ -6,6 +6,7 @@
 #nullable disable
 
 using System.ClientModel.Primitives;
+using Azure;
 using Azure.ResourceManager.Compute.Models;
 using Azure.ResourceManager.Models;
 using Azure.ResourceManager.Resources.Models;
@@ -18,6 +19,7 @@ namespace Azure.ResourceManager.Compute
     /// </summary>
     [ModelReaderWriterBuildable(typeof(AccessUri))]
     [ModelReaderWriterBuildable(typeof(AdditionalCapabilities))]
+    [ModelReaderWriterBuildable(typeof(AdditionalDiskProperties))]
     [ModelReaderWriterBuildable(typeof(AdditionalReplicaSet))]
     [ModelReaderWriterBuildable(typeof(AdditionalUnattendContent))]
     [ModelReaderWriterBuildable(typeof(AllInstancesDown))]
@@ -52,6 +54,7 @@ namespace Azure.ResourceManager.Compute
     [ModelReaderWriterBuildable(typeof(CapacityReservationProfile))]
     [ModelReaderWriterBuildable(typeof(CapacityReservationProperties))]
     [ModelReaderWriterBuildable(typeof(CapacityReservationResource))]
+    [ModelReaderWriterBuildable(typeof(CapacityReservationStateInfo))]
     [ModelReaderWriterBuildable(typeof(CapacityReservationUtilization))]
     [ModelReaderWriterBuildable(typeof(CommunityGalleryData))]
     [ModelReaderWriterBuildable(typeof(CommunityGalleryIdentifier))]
@@ -101,6 +104,7 @@ namespace Azure.ResourceManager.Compute
     [ModelReaderWriterBuildable(typeof(CopyCompletionError))]
     [ModelReaderWriterBuildable(typeof(DataDiskImage))]
     [ModelReaderWriterBuildable(typeof(DataDiskImageEncryption))]
+    [ModelReaderWriterBuildable(typeof(DataDiskImageSecurityProfile))]
     [ModelReaderWriterBuildable(typeof(DataDisksToAttach))]
     [ModelReaderWriterBuildable(typeof(DataDisksToDetach))]
     [ModelReaderWriterBuildable(typeof(DedicatedHostAllocatableVm))]
@@ -130,6 +134,7 @@ namespace Azure.ResourceManager.Compute
     [ModelReaderWriterBuildable(typeof(DiskAccessPatch))]
     [ModelReaderWriterBuildable(typeof(DiskAccessProperties))]
     [ModelReaderWriterBuildable(typeof(DiskAccessResource))]
+    [ModelReaderWriterBuildable(typeof(DiskAvailabilityPolicy))]
     [ModelReaderWriterBuildable(typeof(DiskCreationData))]
     [ModelReaderWriterBuildable(typeof(DiskEncryption))]
     [ModelReaderWriterBuildable(typeof(DiskEncryptionSetData))]
@@ -164,6 +169,8 @@ namespace Azure.ResourceManager.Compute
     [ModelReaderWriterBuildable(typeof(EncryptionSettingsGroup))]
     [ModelReaderWriterBuildable(typeof(EventGridAndResourceGraph))]
     [ModelReaderWriterBuildable(typeof(ExtendedLocation))]
+    [ModelReaderWriterBuildable(typeof(ExtensionFeatureMetadata))]
+    [ModelReaderWriterBuildable(typeof(ExtensionFeatureTag))]
     [ModelReaderWriterBuildable(typeof(GalleryApplicationCustomAction))]
     [ModelReaderWriterBuildable(typeof(GalleryApplicationCustomActionParameter))]
     [ModelReaderWriterBuildable(typeof(GalleryApplicationData))]
@@ -255,6 +262,7 @@ namespace Azure.ResourceManager.Compute
     [ModelReaderWriterBuildable(typeof(ImageDisk))]
     [ModelReaderWriterBuildable(typeof(ImageDiskReference))]
     [ModelReaderWriterBuildable(typeof(ImageListResult))]
+    [ModelReaderWriterBuildable(typeof(ImageMetadataProfile))]
     [ModelReaderWriterBuildable(typeof(ImageOSDisk))]
     [ModelReaderWriterBuildable(typeof(ImageProperties))]
     [ModelReaderWriterBuildable(typeof(ImagePurchasePlan))]
@@ -296,7 +304,9 @@ namespace Azure.ResourceManager.Compute
     [ModelReaderWriterBuildable(typeof(ManagedDiskResource))]
     [ModelReaderWriterBuildable(typeof(ManagedServiceIdentity))]
     [ModelReaderWriterBuildable(typeof(MaxInstancePercentPerZonePolicy))]
+    [ModelReaderWriterBuildable(typeof(MetadataKeyValue))]
     [ModelReaderWriterBuildable(typeof(MigrateToVirtualMachineScaleSetInput))]
+    [ModelReaderWriterBuildable(typeof(MigrateVMAvailabilityZoneInput))]
     [ModelReaderWriterBuildable(typeof(MigrateVmToVirtualMachineScaleSetContent))]
     [ModelReaderWriterBuildable(typeof(NetworkInterfaceReferenceProperties))]
     [ModelReaderWriterBuildable(typeof(OperationRecoverySettings))]
@@ -339,6 +349,7 @@ namespace Azure.ResourceManager.Compute
     [ModelReaderWriterBuildable(typeof(ResourceSkuCosts))]
     [ModelReaderWriterBuildable(typeof(ResourceSkusResult))]
     [ModelReaderWriterBuildable(typeof(ResourceUriList))]
+    [ModelReaderWriterBuildable(typeof(ResponseError))]
     [ModelReaderWriterBuildable(typeof(RestartRecoveryPolicy))]
     [ModelReaderWriterBuildable(typeof(RestorePointCollectionListResult))]
     [ModelReaderWriterBuildable(typeof(RestorePointCollectionProperties))]
@@ -372,6 +383,8 @@ namespace Azure.ResourceManager.Compute
     [ModelReaderWriterBuildable(typeof(ScheduledEventsPolicy))]
     [ModelReaderWriterBuildable(typeof(ScheduleProfile))]
     [ModelReaderWriterBuildable(typeof(ScriptSource))]
+    [ModelReaderWriterBuildable(typeof(SecretsProvisioningComponent))]
+    [ModelReaderWriterBuildable(typeof(SecretsProvisioningSettings))]
     [ModelReaderWriterBuildable(typeof(SecurityPostureReferenceUpdate))]
     [ModelReaderWriterBuildable(typeof(SecurityProfile))]
     [ModelReaderWriterBuildable(typeof(ServiceArtifactReference))]
@@ -441,6 +454,10 @@ namespace Azure.ResourceManager.Compute
     [ModelReaderWriterBuildable(typeof(VirtualMachineCaptureResult))]
     [ModelReaderWriterBuildable(typeof(VirtualMachineData))]
     [ModelReaderWriterBuildable(typeof(VirtualMachineDataDisk))]
+    [ModelReaderWriterBuildable(typeof(VirtualMachineDiagnosticRunCommandData))]
+    [ModelReaderWriterBuildable(typeof(VirtualMachineDiagnosticRunCommandResource))]
+    [ModelReaderWriterBuildable(typeof(VirtualMachineDiagnosticRunCommandsListResult))]
+    [ModelReaderWriterBuildable(typeof(VirtualMachineDiskProperties))]
     [ModelReaderWriterBuildable(typeof(VirtualMachineDiskSecurityProfile))]
     [ModelReaderWriterBuildable(typeof(VirtualMachineExtensionData))]
     [ModelReaderWriterBuildable(typeof(VirtualMachineExtensionHandlerInstanceView))]
@@ -554,6 +571,7 @@ namespace Azure.ResourceManager.Compute
     [ModelReaderWriterBuildable(typeof(VirtualMachineScaleSetUpdateVmProfile))]
     [ModelReaderWriterBuildable(typeof(VirtualMachineScaleSetUpgradePolicy))]
     [ModelReaderWriterBuildable(typeof(VirtualMachineScaleSetVmData))]
+    [ModelReaderWriterBuildable(typeof(VirtualMachineScaleSetVMDiagnosticRunCommandResource))]
     [ModelReaderWriterBuildable(typeof(VirtualMachineScaleSetVmExtensionData))]
     [ModelReaderWriterBuildable(typeof(VirtualMachineScaleSetVmExtensionPatch))]
     [ModelReaderWriterBuildable(typeof(VirtualMachineScaleSetVmExtensionResource))]

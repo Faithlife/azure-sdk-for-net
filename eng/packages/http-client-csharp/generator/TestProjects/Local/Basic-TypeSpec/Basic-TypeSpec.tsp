@@ -6,6 +6,7 @@ import "@typespec/events";
 import "@typespec/xml";
 import "@azure-tools/typespec-client-generator-core";
 import "@azure-tools/typespec-azure-core";
+import "@typespec/http-client-csharp";
 
 @versioned(Versions)
 @service(#{
@@ -177,6 +178,7 @@ model ModelWithClientName {
 
 @doc("this is a roundtrip model")
 @useSystemTextJsonConverter()
+@TypeSpec.HttpClient.CSharp.dynamicModel
 model RoundTripModel {
   @doc("Required string, illustrating a reference type property.")
   requiredString: string;
@@ -811,3 +813,37 @@ op receiveJsonLines(): JsonlStream<StreamingItem>;
 @get
 @route("/streaming/sse/receive")
 op receiveSse(): SSEStream<SampleEvents>;
+
+@get
+@route("/optional-response")
+op getOptionalResponse(): {
+  @statusCode statusCode: 200;
+  @body body: ThingModel;
+} | {
+  @statusCode statusCode: 204;
+};
+
+scalar sandboxResourceIdentifier extends armResourceIdentifier<[{ type: "Microsoft.App/sandboxes" }]>;
+
+model ResourceIdentifierModel {
+  id: armResourceIdentifier;
+  optionalId?: sandboxResourceIdentifier;
+  nullableId: armResourceIdentifier | null;
+  ids: armResourceIdentifier[];
+}
+
+@post
+@route("/resource-identifiers/{resourceId}")
+op roundTripResourceIdentifiers(
+  @path resourceId: armResourceIdentifier,
+  @query queryId: armResourceIdentifier,
+  @header("x-resource-id") headerId: armResourceIdentifier,
+  @body body: ResourceIdentifierModel,
+): ResourceIdentifierModel;
+
+@get
+@route("/resource-identifiers/xml")
+op getResourceIdentifiersXml(): {
+  @header contentType: "application/xml";
+  @body body: ResourceIdentifierModel;
+};
